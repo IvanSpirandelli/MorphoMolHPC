@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-10
-#SBATCH --chdir=/work/spirandelli/MorphoMolHelpers/
+#SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
 #SBATCH -o ./hpc/out/%a.out # STDOUT
 
 export http_proxy=http://proxy2.uni-potsdam.de:3128 #Setting proxy, due to lack of Internet on compute nodes.
@@ -19,7 +19,7 @@ config=hpc/configs/2_6r7m_config.txt
 # Extract the variables from config file
 config_string=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
 
-julia -e "include(\"hpc/rwm_call.jl\"); rwm_call(\"$config_string\")"
+julia -e "include(\"julia_scripts/rwm_call.jl\"); rwm_call(\"$config_string\")"
 
 # copy back results
-mkdir -p ~/output/ && cp -r assets/output/assembly/* ~/output/
+mkdir -p ~/output/ && cp -r simulation_output/* ~/output/
