@@ -11,7 +11,7 @@ export http_proxy=http://proxy2.uni-potsdam.de:3128 #Setting proxy, due to lack 
 export https_proxy=http://proxy2.uni-potsdam.de:3128
 
 module purge
-module load lang/Julia/1.10.0-linux-x86_64
+module load lang/Julia/1.7.3-linux-x86_64
 
 # Specify the path to the config file
 config=hpc/configs/2_6r7m_config.txt
