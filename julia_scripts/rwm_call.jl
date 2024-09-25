@@ -13,9 +13,12 @@ function rwm_call(
     )
 
     eval(Meta.parse(config_string))
-    template_mol = MorphoMolHPC.TEMPLATES[mol_type][1]
-    template_radii = MorphoMolHPC.TEMPLATES[mol_type][2]
-    x_init = MorphoMolHPC.get_initial_state(n_mol, bnds)
+    println("TEST")
+    println(mol_type)
+    println("wegflexen")
+    template_mol = MorphoMol.Utilities.TMV_TEMPLATES[mol_type][1]
+    template_radii = MorphoMol.Utilities.TMV_TEMPLATES[mol_type][2]
+    x_init = MorphoMol.Utilities..get_initial_state(n_mol, bnds)
     
     n_atoms_per_mol = length(template_mol) ÷ 3
     template_mol = reshape(template_mol,(3,n_atoms_per_mol))
