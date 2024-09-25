@@ -13,9 +13,7 @@ function rwm_call(
     )
 
     eval(Meta.parse(config_string))
-    println("TEST")
-    println(mol_type)
-    println("wegflexen")
+
     template_mol = MorphoMol.Utilities.TMV_TEMPLATES[mol_type][1]
     template_radii = MorphoMol.Utilities.TMV_TEMPLATES[mol_type][2]
     x_init = MorphoMol.Utilities.get_initial_state(n_mol, bnds)
