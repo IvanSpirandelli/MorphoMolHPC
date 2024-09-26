@@ -1,5 +1,5 @@
 using Pkg
-Pkg.activate("../../MorphoMolMonteCarlo/Project.toml")
+Pkg.activate("Project.toml")
 Pkg.instantiate()
 
 using MorphoMol

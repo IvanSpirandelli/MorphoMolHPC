@@ -2,7 +2,6 @@ using Pkg
 Pkg.activate("Project.toml")
 Pkg.instantiate()
 
-using MorphoMolHPC
 using MorphoMol
 using JLD2
 using LinearAlgebra
