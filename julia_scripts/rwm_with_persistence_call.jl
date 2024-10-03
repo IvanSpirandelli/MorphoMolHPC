@@ -43,7 +43,7 @@ function rwm_with_persistence_call(
         "overlap_slope" => overlap_slope,
         "persistence_weight" => persistence_weight,
         "T" => T,
-        "mol_type"=mol_type
+        "mol_type" => mol_type
     )
 
     energy_measures = Dict(
