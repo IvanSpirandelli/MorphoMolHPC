@@ -12,11 +12,6 @@ using PyCall
 function rwm_with_persistence_call(
     config_string::String
     )
-
-    py"""
-    import sys
-    print(sys.executable)
-    """
     # Just making sure all these variable EXIST!
     mol_type = "6r7m"
     n_mol = 2
@@ -31,9 +26,13 @@ function rwm_with_persistence_call(
     bnds = 130.0
     comment = ""
     T = 2
-    simulation_time_minutes = 1.0
+    simulation_time_minutes = 0.5
+    output_directory="simulation_output/rwm_wp_2_6r7m/"
+    name = "x"
 
     eval(Meta.parse(config_string))
+
+    println(name)
 
     template_centers = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_centers"]
     template_radii = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_radii"]
