@@ -2,6 +2,7 @@ using Pkg
 Pkg.activate("Project.toml")
 Pkg.instantiate()
 
+ENV["PYCALL_JL_RUNTIME_PYTHON"] = Sys.which("python3")
 using MorphoMol
 using JLD2
 using LinearAlgebra
@@ -11,6 +12,12 @@ using PyCall
 function rwm_with_persistence_call(
     config_string::String
     )
+
+    py"""
+        import sys
+        print(sys.executable)
+    """
+
     eval(Meta.parse(config_string))
 
     template_centers = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_centers"]
