@@ -11,6 +11,7 @@ export http_proxy=http://proxy2.uni-potsdam.de:3128 #Setting proxy, due to lack 
 export https_proxy=http://proxy2.uni-potsdam.de:3128
 
 module purge
+source ../oineus_venv/bin/activate
 module load lang/Julia/1.7.3-linux-x86_64
 
 # Specify the path to the config file
