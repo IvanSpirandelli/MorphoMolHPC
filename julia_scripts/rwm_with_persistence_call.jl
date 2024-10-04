@@ -94,7 +94,9 @@ function solvation_free_energy_with_persistence_and_measures_in_bounds(x::Vector
     n_mol = length(x) ÷ 6
     n_atoms_per_mol = size(template_centers)[2]
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
-    idgm = MorphoMol.Energies.get_interface_diagram(Vector{Vector{Float64}}(eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))), n_atoms_per_mol)
+    points = Vector{Vector{Float64}}(eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3)))))
+    println(Vector{Vector{Float64}}(points))
+    idgm = MorphoMol.Energies.get_interface_diagram(points, n_atoms_per_mol)
     idgm = [idgm[1], idgm[2], idgm[3], idgm[4]]
     cp2 = sum(idgm[2][:,2] - idgm[2][:,1])
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
