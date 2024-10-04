@@ -14,8 +14,8 @@ function rwm_with_persistence_call(
     )
 
     py"""
-        import sys
-        print(sys.executable)
+    import sys
+    print(sys.executable)
     """
 
     eval(Meta.parse(config_string))
