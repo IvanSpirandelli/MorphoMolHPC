@@ -17,10 +17,23 @@ function rwm_with_persistence_call(
     import sys
     print(sys.executable)
     """
-
-    eval(Meta.parse(config_string))
+    # Just making sure all these variable EXIST!
     mol_type = "6r7m"
     n_mol = 2
+    rs = 1.4
+    η = 0.3665
+    σ_r = 0.5
+    σ_t = 1.25
+    overlap_jump = 0.0
+    overlap_slope = 0.85
+    persistence_weight = -0.1
+    delaunay_eps = 100.0
+    bnds = 130.0
+    comment = ""
+    T = 2
+
+    eval(Meta.parse(config_string))
+
     template_centers = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_centers"]
     template_radii = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_radii"]
     x_init = MorphoMol.Utilities.get_initial_state(n_mol, bnds)
