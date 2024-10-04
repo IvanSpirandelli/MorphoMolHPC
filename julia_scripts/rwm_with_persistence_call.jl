@@ -31,6 +31,7 @@ function rwm_with_persistence_call(
     bnds = 130.0
     comment = ""
     T = 2
+    simulation_time_minutes = 1.0
 
     eval(Meta.parse(config_string))
 
