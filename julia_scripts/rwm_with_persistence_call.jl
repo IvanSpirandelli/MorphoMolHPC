@@ -20,6 +20,7 @@ function rwm_with_persistence_call(
 
     eval(Meta.parse(config_string))
     mol_type = "6r7m"
+    n_mol = 2
     template_centers = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_centers"]
     template_radii = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_radii"]
     x_init = MorphoMol.Utilities.get_initial_state(n_mol, bnds)
