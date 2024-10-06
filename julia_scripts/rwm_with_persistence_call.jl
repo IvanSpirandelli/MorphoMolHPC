@@ -64,8 +64,9 @@ function rwm_with_persistence_call(
         "T" => T,
         "mol_type" => mol_type
     )
-
-    energy_measures = Dict(
+    
+    output = Dict(
+        "states" => Vector{Vector{Float64}}([]),
         "Es" => Vector{Float64}([]), 
         "Vs" => Vector{Float64}([]), 
         "As" => Vector{Float64}([]), 
@@ -73,19 +74,10 @@ function rwm_with_persistence_call(
         "Xs" => Vector{Float64}([]),
         "OLs" => Vector{Float64}([]),
         "IDGMs" => Vector{Any}([]),
-        )
-    
-    algo_measures = Dict(
-        "αs" => Vector{Float32}([])
-    )
-    
-    output = MorphoMol.Algorithms.SimulationOutput(
-        Vector{Vector{Float64}}([]),
-        energy_measures,
-        algo_measures
+        "αs" => Vector{Float32}([]),
     )
 
-    MorphoMol.Algorithms.simulate!(rwm, output, deepcopy(x_init), simulation_time_minutes);
+    MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
     mkpath(output_directory)
     @save "$(output_directory)/$(name).jld2" input output
 end
