@@ -31,38 +31,38 @@ function rwm_call(
 
     rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
 
-    input = MorphoMol.Algorithms.MorphometricSimulationInput(
-        template_centers,
-        template_radii,
-        n_mol,
-        σ_r,
-        σ_t,
-        rs,
-        η,
-        pf,
-        0.0,
-        overlap_slope,
-        T,
-        0.0,
-        0
+    input = Dict(
+        "template_centers" => template_centers,
+        "template_radii" => template_radii,
+        "n_mol" => n_mol,
+        "σ_r" => σ_r,
+        "σ_t" => σ_t,
+        "rs" => rs,
+        "η" => η,
+        "white_bear_prefactpors" => pf,
+        "overlap_slope" => overlap_slope,
+        "persistence_weight" => persistence_weight,
+        "T" => T,
+        "mol_type" => mol_type
+    )
+    
+    output = Dict(
+        "states" => Vector{Vector{Float64}}([]),
+        "Es" => Vector{Float64}([]), 
+        "Vs" => Vector{Float64}([]), 
+        "As" => Vector{Float64}([]), 
+        "Cs" => Vector{Float64}([]), 
+        "Xs" => Vector{Float64}([]),
+        "OLs" => Vector{Float64}([]),
+        "IDGMs" => Vector{Any}([]),
+        "αs" => Vector{Float32}([]),
     )
 
-    output = MorphoMol.Algorithms.MorphometricSimulationOutput(
-        Vector{Vector{Float64}}([]),
-        Vector{Float64}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([])
-    )
-
-    MorphoMol.Algorithms.simulate!(rwm, output, deepcopy(x_init), simulation_time_minutes);
+    MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
 
     in_out_data = MorphoMol.Algorithms.SimulationData(input, output)
     mkpath(output_directory)
-    @save "$(output_directory)/$(name).jld2" in_out_data
+    @save "$(output_directory)/$(name).jld2" input output
 end
 
 perturb_all(x, Σ) = x .+ (randn(length(x)) .* Σ)
