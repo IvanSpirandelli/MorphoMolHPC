@@ -41,7 +41,6 @@ function rwm_call(
         "η" => η,
         "white_bear_prefactpors" => pf,
         "overlap_slope" => overlap_slope,
-        "persistence_weight" => persistence_weight,
         "T" => T,
         "mol_type" => mol_type
     )
