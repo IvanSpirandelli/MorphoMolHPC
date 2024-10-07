@@ -46,7 +46,7 @@ function rwm_call(
         "mol_type" => mol_type
     )
     
-    output = Dict(
+    output = Dict{String, Vector}(
         "states" => Vector{Vector{Float64}}([]),
         "Es" => Vector{Float64}([]), 
         "Vs" => Vector{Float64}([]), 
