@@ -23,7 +23,6 @@ function rwm_only_persistence_call(
     radii = vcat([template_radii for i in 1:n_mol]...);
 
     β = 1.0 / T
-    pf = MorphoMol.Energies.get_prefactors(rs, η)
     Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
 
     energy(x) = interface_persistence_in_bounds(x, template_centers, persistence_weight, bnds, delaunay_eps)
