@@ -29,38 +29,38 @@ function hmc_call(
 
     hmc = MorphoMol.Algorithms.HamiltonianMonteCarlo(energy, energy_gradient!, MorphoMol.Algorithms.standard_leapfrog!, β, L, ε, Σ)
 
-    input = MorphoMol.Algorithms.MorphometricSimulationInput(
-        template_centers,
-        template_radii,
-        n_mol,
-        σ_r,
-        σ_t,
-        rs,
-        η,
-        pf,
-        0.0,
-        overlap_slope,
-        T,
-        ε,
-        L
+    input = Dict(
+        "template_centers" => template_centers,
+        "template_radii" => template_radii,
+        "n_mol" => n_mol,
+        "σ_r" => σ_r,
+        "σ_t" => σ_t,
+        "rs" => rs,
+        "η" => η,
+        "white_bear_prefactpors" => pf,
+        "overlap_slope" => overlap_slope,
+        "T" => T,
+        "mol_type" => mol_type,
+        "ε" => ε,
+        "L" => L
+    )
+    
+    output = Dict{String, Vector}(
+        "states" => Vector{Vector{Float64}}([]),
+        "Es" => Vector{Float64}([]), 
+        "Vs" => Vector{Float64}([]), 
+        "As" => Vector{Float64}([]), 
+        "Cs" => Vector{Float64}([]), 
+        "Xs" => Vector{Float64}([]),
+        "OLs" => Vector{Float64}([]),
+        "PDGMs" => Vector{Any}([]),
+        "αs" => Vector{Float32}([]),
     )
 
-    output = MorphoMol.Algorithms.MorphometricSimulationOutput(
-        Vector{Vector{Float64}}([]),
-        Vector{Float64}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([]),
-        Vector{Float32}([])
-    )
+    MorphoMol.Algorithms.simulate!(hmc, deepcopy(x_init), simulation_time_minutes, output)
 
-    MorphoMol.Algorithms.simulate!(hmc, output, deepcopy(x_init), simulation_time_minutes);
-
-    in_out_data = MorphoMol.Algorithms.SimulationData(input, output)
     mkpath(output_directory)
-    @save "$(output_directory)/$(name).jld2" in_out_data
+    @save "$(output_directory)/$(name).jld2" input output
 end
 
 function get_flat_realization(x, template_centers)
@@ -109,5 +109,5 @@ function solvation_free_energy_and_measures(x::Vector{Float64}, template_centers
     n_atoms_per_mol = size(template_centers)[2]
     flat_realization = get_flat_realization(x, template_centers)
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
-    sum(measures .* [prefactors; 1.0]), measures
+    sum(measures .* [prefactors; 1.0]), Dict{String,Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5])
 end

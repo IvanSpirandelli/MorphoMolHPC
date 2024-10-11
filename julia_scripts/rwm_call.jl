@@ -53,7 +53,7 @@ function rwm_call(
         "Cs" => Vector{Float64}([]), 
         "Xs" => Vector{Float64}([]),
         "OLs" => Vector{Float64}([]),
-        "IDGMs" => Vector{Any}([]),
+        "PDGMs" => Vector{Any}([]),
         "αs" => Vector{Float32}([]),
     )
 
