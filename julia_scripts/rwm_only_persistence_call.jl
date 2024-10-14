@@ -50,6 +50,9 @@ function rwm_only_persistence_call(
         "Xs" => Vector{Float64}([]),
         "OLs" => Vector{Float64}([]),
         "PDGMs" => Vector{Any}([]),
+        "P0" => Vector{Float64}([]),
+        "P1" => Vector{Float64}([]),
+        "P2" => Vector{Float64}([]),
         "αs" => Vector{Float32}([]),
     )
 
@@ -84,4 +87,14 @@ function persistence(x::Vector{Float64}, template_centers::Matrix{Float64}, pers
     pdgm = MorphoMol.Energies.get_persistence_diagram(points)
     pdgm = [pdgm[1], pdgm[2], pdgm[3]]
     MorphoMol.Energies.get_total_persistence(pdgm, persistence_weights) , Dict("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "PDGMs"  => pdgm)
+end
+
+function persistence_without_entire_diagram(x::Vector{Float64}, template_centers::Matrix{Float64}, persistence_weights::Vector{Float64})
+    flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
+    points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
+    pdgm = MorphoMol.Energies.get_persistence_diagram(points)
+    p0 = MorphoMol.Energies.get_persistence(pdgm[1], persistence_weights[1])
+    p1 = MorphoMol.Energies.get_persistence(pdgm[2], persistence_weights[2])
+    p2 = MorphoMol.Energies.get_persistence(pdgm[3], persistence_weights[3])
+    p0 + p1 + p2, Dict("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "P0" => p0, "P1" => p1, "P2" => p2)
 end
