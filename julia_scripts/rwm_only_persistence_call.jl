@@ -20,12 +20,11 @@ function rwm_only_persistence_call(
     
     n_atoms_per_mol = length(template_centers) ÷ 3
     template_centers = reshape(template_centers,(3,n_atoms_per_mol))
-    radii = vcat([template_radii for i in 1:n_mol]...);
 
     β = 1.0 / T
     Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
 
-    energy(x) = persistence_in_bounds(x, template_centers, persistence_weights, bnds, delaunay_eps)
+    energy(x) = persistence(x, template_centers, persistence_weights)
     perturbation(x) = perturb_single_randomly_chosen(x, σ_r, σ_t)
     #perturbation(x) = perturb_all(x, Σ)
 
@@ -68,10 +67,18 @@ function perturb_single_randomly_chosen(x, σ_r, σ_t)
     x_cand
 end
 
-function persistence_in_bounds(x::Vector{Float64}, template_centers::Matrix{Float64}, persistence_weights::Vector{Float64}, bounds::Float64, delaunay_eps::Float64)
+function persistence_in_bounds(x::Vector{Float64}, template_centers::Matrix{Float64}, persistence_weights::Vector{Float64}, bounds::Float64)
     if any(0.0 >= e || e >= bounds for e in x[4:6:end]) || any(0.0 >= e || e >= bounds for e in x[5:6:end]) || any(0.0 >= e || e >= bounds for e in x[6:6:end])
         return Inf, Dict("Vs" => Inf, "As" => Inf, "Cs" => Inf, "Xs" => Inf, "OLs" => Inf, "PDGMs"  => nothing)
     end
+    flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
+    points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
+    pdgm = MorphoMol.Energies.get_persistence_diagram(points)
+    pdgm = [pdgm[1], pdgm[2], pdgm[3]]
+    MorphoMol.Energies.get_total_persistence(pdgm, persistence_weights) , Dict("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "PDGMs"  => pdgm)
+end
+
+function persistence(x::Vector{Float64}, template_centers::Matrix{Float64}, persistence_weights::Vector{Float64})
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
     pdgm = MorphoMol.Energies.get_persistence_diagram(points)
