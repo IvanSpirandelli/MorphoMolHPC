@@ -24,7 +24,7 @@ function rwm_only_persistence_call(
     β = 1.0 / T
     Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
 
-    energy(x) = persistence(x, template_centers, persistence_weights)
+    energy(x) = persistence_without_entire_diagram(x, template_centers, persistence_weights)
     perturbation(x) = perturb_single_randomly_chosen(x, σ_r, σ_t)
     #perturbation(x) = perturb_all(x, Σ)
 
