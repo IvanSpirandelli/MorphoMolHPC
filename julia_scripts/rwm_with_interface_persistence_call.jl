@@ -9,7 +9,7 @@ using LinearAlgebra
 using Rotations
 using PyCall
 
-function rwm_with_persistence_call(
+function rwm_with_interface_persistence_call(
     config_string::String
     )
     eval(Meta.parse(config_string))
@@ -26,7 +26,7 @@ function rwm_with_persistence_call(
     pf = MorphoMol.Energies.get_prefactors(rs, η)
     Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
 
-    energy(x) = solvation_free_energy_with_persistence_and_measures_in_bounds(x, template_centers, radii, rs, pf, 0.0, overlap_slope, persistence_weights, bnds, delaunay_eps)
+    energy(x) = solvation_free_energy_with_interface_persistence_and_measures(x, template_centers, radii, rs, pf, 0.0, overlap_slope, persistence_weights, delaunay_eps)
     perturbation(x) = perturb_single_randomly_chosen(x, σ_r, σ_t)
     #perturbation(x) = perturb_all(x, Σ)
 
@@ -55,7 +55,8 @@ function rwm_with_persistence_call(
         "Cs" => Vector{Float64}([]), 
         "Xs" => Vector{Float64}([]),
         "OLs" => Vector{Float64}([]),
-        "PDGMs" => Vector{Any}([]),
+        "IDGMs" => Vector{Any}([]),
+        "IFILs" => Vector{Any}([]),
         "αs" => Vector{Float32}([]),
     )
 
@@ -73,16 +74,13 @@ function perturb_single_randomly_chosen(x, σ_r, σ_t)
     x_cand
 end
 
-function solvation_free_energy_with_persistence_and_measures_in_bounds(x::Vector{Float64}, template_centers::Matrix{Float64}, radii::Vector{Float64}, rs::Float64, prefactors::AbstractVector, overlap_jump::Float64, overlap_slope::Float64, persistence_weights::Vector{Float64}, bounds::Float64, delaunay_eps::Float64)
-    if any(0.0 >= e || e >= bounds for e in x[4:6:end]) || any(0.0 >= e || e >= bounds for e in x[5:6:end]) || any(0.0 >= e || e >= bounds for e in x[6:6:end])
-        return Inf, Dict("Vs" => Inf, "As" => Inf, "Cs" => Inf, "Xs" => Inf, "OLs" => Inf, "PDGMs"  => nothing)
-    end
+function solvation_free_energy_with_interface_persistence_and_measures(x::Vector{Float64}, template_centers::Matrix{Float64}, radii::Vector{Float64}, rs::Float64, prefactors::AbstractVector, overlap_jump::Float64, overlap_slope::Float64, persistence_weights::Vector{Float64}, delaunay_eps::Float64)
     n_mol = length(x) ÷ 6
     n_atoms_per_mol = size(template_centers)[2]
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
-    pdgm = MorphoMol.Energies.get_persistence_diagram(points)
-    pdgm = [pdgm[1], pdgm[2], pdgm[3]]
+    idgm, ifil = MorphoMol.Energies.get_interface_diagram_and_filtration(points, n_atoms_per_mol)
+    idgm = [idgm[2], idgm[3]]
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
-    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence(pdgm, persistence_weights), Dict("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "PDGMs"  => pdgm)
+    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence(idgm, persistence_weights), Dict("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "IDGMs"  => idgm, "IFILs" => ifil)
 end
