@@ -61,8 +61,27 @@ function rwm_with_interface_persistence_call(
     )
 
     MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
+
+    output_without_diagrams = Dict{String, Vector}(
+        "states" => output["states"],
+        "Es" => output["Es"], 
+        "Vs" => output["Vs"], 
+        "As" => output["As"], 
+        "Cs" => output["Cs"], 
+        "Xs" => output["Xs"],
+        "OLs" => output["OLs"],
+        "αs" => output["αs"],
+    )
+
     mkpath(output_directory)
-    @save "$(output_directory)/$(name).jld2" input output
+    @save "$(output_directory)/$(name).jld2" input output_without_diagrams
+  
+    mkpath("$(output_directory)_diagrams")
+    diagram_output = Dict{String, Vector}(
+        "IDGMs" => output["IDGMs"],
+        "IFILs" => output["IFILs"],
+    )
+    @save "$(output_directory)_diagrams/$(name).jld2" diagram_output
 end
 
 perturb_all(x, Σ) = x .+ (randn(length(x)) .* Σ)
@@ -82,5 +101,5 @@ function solvation_free_energy_with_interface_persistence_and_measures(x::Vector
     idgm = [idgm[2], idgm[3]]
     ifil = [(c.vertices, c.value) for c in ifil]
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
-    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence(idgm, persistence_weights), Dict("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "IDGMs"  => idgm, "IFILs" => ifil)
+    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_divided_persistence_summed(idgm, persistence_weights), Dict("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "IDGMs"  => idgm, "IFILs" => ifil)
 end
