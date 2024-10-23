@@ -78,7 +78,7 @@ function persistence(x::Vector{Float64}, template_centers::Matrix{Float64}, pers
     p0 = MorphoMol.Energies.get_total_persistence(pdgm[1], persistence_weights[1])
     p1 = MorphoMol.Energies.get_total_persistence(pdgm[2], persistence_weights[2])
     p2 = MorphoMol.Energies.get_total_persistence(pdgm[3], persistence_weights[3])
-    p0 + p1 + p2, Dict("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "P0" => p0, "P1" => p1, "P2" => p2, "PDGMs"  => pdgm)
+    p0 + p1 + p2, Dict{String, Any}("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "P0" => p0, "P1" => p1, "P2" => p2, "PDGMs"  => pdgm)
 end
 
 function persistence_without_diagram(x::Vector{Float64}, template_centers::Matrix{Float64}, persistence_weights::Vector{Float64})
@@ -88,5 +88,5 @@ function persistence_without_diagram(x::Vector{Float64}, template_centers::Matri
     p0 = MorphoMol.Energies.get_total_persistence(pdgm[1], persistence_weights[1])
     p1 = MorphoMol.Energies.get_total_persistence(pdgm[2], persistence_weights[2])
     p2 = MorphoMol.Energies.get_total_persistence(pdgm[3], persistence_weights[3])
-    p0 + p1 + p2, Dict("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "P0" => p0, "P1" => p1, "P2" => p2)
+    p0 + p1 + p2, Dict{String, Any}("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "P0" => p0, "P1" => p1, "P2" => p2)
 end
