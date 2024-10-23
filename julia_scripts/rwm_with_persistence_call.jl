@@ -60,26 +60,11 @@ function rwm_with_persistence_call(
     )
 
     MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
-    
-    output_without_diagrams = Dict{String, Vector}(
-        "states" => output["states"],
-        "Es" => output["Es"], 
-        "Vs" => output["Vs"], 
-        "As" => output["As"], 
-        "Cs" => output["Cs"], 
-        "Xs" => output["Xs"],
-        "OLs" => output["OLs"],
-        "αs" => output["αs"],
-    )
 
     mkpath(output_directory)
-    @save "$(output_directory)/$(name).jld2" input output_without_diagrams
-  
-    mkpath("$(output_directory)_diagrams")
-    diagram_output = Dict{String, Vector}(
-        "PDGMs" => output["PDGMs"],
-    )
-    @save "$(output_directory)_diagrams/$(name).jld2" diagram_output
+    @save "$(output_directory)/$(name).jld2" input output
+
+    
 end
 
 perturb_all(x, Σ) = x .+ (randn(length(x)) .* Σ)
