@@ -86,7 +86,7 @@ function solvation_free_energy_with_persistence_and_measures_in_bounds(x::Vector
     pdgm = MorphoMol.Energies.get_persistence_diagram(points)
     pdgm = [pdgm[1], pdgm[2], pdgm[3]]
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
-    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence(pdgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "PDGMs"  => pdgm)
+    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence_summed(pdgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "PDGMs"  => pdgm)
 end
 
 function solvation_free_energy_with_persistence_in_bounds_without_diagrams(x::Vector{Float64}, template_centers::Matrix{Float64}, radii::Vector{Float64}, rs::Float64, prefactors::AbstractVector, overlap_jump::Float64, overlap_slope::Float64, persistence_weights::Vector{Float64}, bounds::Float64, delaunay_eps::Float64)
@@ -99,5 +99,5 @@ function solvation_free_energy_with_persistence_in_bounds_without_diagrams(x::Ve
     pdgm = MorphoMol.Energies.get_persistence_diagram(points)
     pdgm = [pdgm[1], pdgm[2], pdgm[3]]
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
-    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence(pdgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5])
+    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence_summed(pdgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5])
 end
