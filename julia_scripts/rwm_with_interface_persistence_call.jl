@@ -54,6 +54,8 @@ function rwm_with_interface_persistence_call(
         "As" => Vector{Float64}([]), 
         "Cs" => Vector{Float64}([]), 
         "Xs" => Vector{Float64}([]),
+        "P0s" => Vector{Float64}([]),
+        "P1s" => Vector{Float64}([]),
         "OLs" => Vector{Float64}([]),
         "IDGMs" => Vector{Any}([]),
         "IFILs" => Vector{Any}([]),
@@ -74,23 +76,25 @@ function perturb_single_randomly_chosen(x, σ_r, σ_t)
     x_cand
 end
 
-function solvation_free_energy_with_interface_persistence_and_measures(x::Vector{Float64}, template_centers::Matrix{Float64}, radii::Vector{Float64}, rs::Float64, prefactors::AbstractVector, overlap_jump::Float64, overlap_slope::Float64, persistence_weights::Vector{Float64}, delaunay_eps::Float64)
-    n_atoms_per_mol = size(template_centers)[2]
-    flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
-    points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
-    idgm, ifil = MorphoMol.Energies.get_interface_diagram_and_filtration(points, n_atoms_per_mol)
-    idgm = [idgm[2], idgm[3]]
-    ifil = [(c.vertices, c.value) for c in ifil]
-    measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
-    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_divided_persistence_summed(idgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "IDGMs"  => idgm, "IFILs" => ifil)
-end
+# function solvation_free_energy_with_interface_persistence_and_measures(x::Vector{Float64}, template_centers::Matrix{Float64}, radii::Vector{Float64}, rs::Float64, prefactors::AbstractVector, overlap_jump::Float64, overlap_slope::Float64, persistence_weights::Vector{Float64}, delaunay_eps::Float64)
+#     n_atoms_per_mol = size(template_centers)[2]
+#     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
+#     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
+#     idgm, ifil = MorphoMol.Energies.get_interface_diagram_and_filtration(points, n_atoms_per_mol)
+#     idgm = [idgm[2], idgm[3]]
+#     ifil = [(c.vertices, c.value) for c in ifil]
+#     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
+#     sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_divided_persistence_summed(idgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "IDGMs"  => idgm, "IFILs" => ifil)
+# end
 
 function solvation_free_energy_with_interface_persistence_and_measures_without_diagrams(x::Vector{Float64}, template_centers::Matrix{Float64}, radii::Vector{Float64}, rs::Float64, prefactors::AbstractVector, overlap_jump::Float64, overlap_slope::Float64, persistence_weights::Vector{Float64}, delaunay_eps::Float64)
     n_atoms_per_mol = size(template_centers)[2]
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
     idgm = MorphoMol.Energies.get_interface_diagram(points, n_atoms_per_mol)
-    idgm = [idgm[2], idgm[3]]
+    p0 = MorphoMol.Energies.get_total_persistence(idgm[1], persistence_weights[1])
+    p1 = MorphoMol.Energies.get_total_persistence(idgm[2], persistence_weights[2])
+
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
-    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_divided_persistence_summed(idgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5])
+    sum(measures .* [prefactors; [1.0]]) + p0 + p1, Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "P0s" => p0, "P1s" => p1)
 end
