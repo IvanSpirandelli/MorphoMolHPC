@@ -7,7 +7,7 @@ using JLD2
 using LinearAlgebra
 using Rotations
 
-function rwm_call(
+function rwm_ma_call(
     config_string::String
     )
 
