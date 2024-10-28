@@ -2,10 +2,12 @@ using Pkg
 Pkg.activate("Project.toml")
 Pkg.instantiate()
 
+ENV["PYCALL_JL_RUNTIME_PYTHON"] = Sys.which("python3")
 using MorphoMol
 using JLD2
 using LinearAlgebra
 using Rotations
+using PyCall
 
 function mixed_rwm_call(
     config_string::String
