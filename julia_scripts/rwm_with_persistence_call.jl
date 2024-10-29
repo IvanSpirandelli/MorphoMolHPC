@@ -55,6 +55,9 @@ function rwm_with_persistence_call(
         "Cs" => Vector{Float64}([]), 
         "Xs" => Vector{Float64}([]),
         "OLs" => Vector{Float64}([]),
+        "P0s" => Vector{Float64}([]),
+        "P1s" => Vector{Float64}([]),
+        "P2s" => Vector{Float64}([]),
         "PDGMs" => Vector{Any}([]),
         "αs" => Vector{Float32}([]),
     )
@@ -91,13 +94,16 @@ end
 
 function solvation_free_energy_with_persistence_in_bounds_without_diagrams(x::Vector{Float64}, template_centers::Matrix{Float64}, radii::Vector{Float64}, rs::Float64, prefactors::AbstractVector, overlap_jump::Float64, overlap_slope::Float64, persistence_weights::Vector{Float64}, bounds::Float64, delaunay_eps::Float64)
     if any(0.0 >= e || e >= bounds for e in x[4:6:end]) || any(0.0 >= e || e >= bounds for e in x[5:6:end]) || any(0.0 >= e || e >= bounds for e in x[6:6:end])
-        return Inf, Dict("Vs" => Inf, "As" => Inf, "Cs" => Inf, "Xs" => Inf, "OLs" => Inf, "PDGMs"  => nothing)
+        return Inf, Dict("Vs" => Inf, "As" => Inf, "Cs" => Inf, "Xs" => Inf, "OLs" => Inf)
     end
     n_atoms_per_mol = size(template_centers)[2]
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
     pdgm = MorphoMol.Energies.get_persistence_diagram(points)
     pdgm = [pdgm[1], pdgm[2], pdgm[3]]
+    p0 = MorphoMol.Energies.get_total_persistence(pdgm[1], persistence_weights[1])
+    p1 = MorphoMol.Energies.get_total_persistence(pdgm[2], persistence_weights[2])
+    p2 = MorphoMol.Energies.get_total_persistence(pdgm[3], persistence_weights[3])
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
-    sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence_summed(pdgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5])
+    sum(measures .* [prefactors; [1.0]]) + p0 + p1 + p2, Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "P0s" => p0, "P1s" => p1, "P2s" => p2)
 end

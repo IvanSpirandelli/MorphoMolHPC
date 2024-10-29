@@ -50,9 +50,9 @@ function rwm_only_persistence_call(
         "Xs" => Vector{Float64}([]),
         "OLs" => Vector{Float64}([]),
         "PDGMs" => Vector{Any}([]),
-        "P0" => Vector{Float64}([]),
-        "P1" => Vector{Float64}([]),
-        "P2" => Vector{Float64}([]),
+        "P0s" => Vector{Float64}([]),
+        "P1s" => Vector{Float64}([]),
+        "P2s" => Vector{Float64}([]),
         "αs" => Vector{Float32}([]),
     )
 
@@ -88,5 +88,5 @@ function persistence_without_diagram(x::Vector{Float64}, template_centers::Matri
     p0 = MorphoMol.Energies.get_total_persistence(pdgm[1], persistence_weights[1])
     p1 = MorphoMol.Energies.get_total_persistence(pdgm[2], persistence_weights[2])
     p2 = MorphoMol.Energies.get_total_persistence(pdgm[3], persistence_weights[3])
-    p0 + p1 + p2, Dict{String, Any}("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "P0" => p0, "P1" => p1, "P2" => p2)
+    p0 + p1 + p2, Dict{String, Any}("Vs" => 0.0, "As" =>0.0, "Cs" => 0.0, "Xs" => 0.0, "OLs" =>0.0, "P0s" => p0, "P1s" => p1, "P2s" => p2)
 end
