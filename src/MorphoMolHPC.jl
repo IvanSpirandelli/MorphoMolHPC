@@ -1,8 +1,5 @@
 module MorphoMolHPC
 
-include("template_data.jl")
-
-export TEMPLATES
 export get_initial_state
 
 using Distributions
