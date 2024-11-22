@@ -92,7 +92,7 @@ end
 function persistence_without_diagram(x::Vector{Float64}, template_centers::Matrix{Float64}, persistence_weights::Vector{Float64})
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
-    pdgm = MorphoMol.Energies.get_persistence_diagram(points)
+    pdgm = MorphoMol.Energies.get_alpha_shape_persistence_diagram(points)
     p0 = MorphoMol.Energies.get_total_persistence(pdgm[1], persistence_weights[1])
     p1 = MorphoMol.Energies.get_total_persistence(pdgm[2], persistence_weights[2])
     p2 = MorphoMol.Energies.get_total_persistence(pdgm[3], persistence_weights[3])

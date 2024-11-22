@@ -86,7 +86,7 @@ function solvation_free_energy_with_persistence_and_measures_in_bounds(x::Vector
     n_atoms_per_mol = size(template_centers)[2]
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
-    pdgm = MorphoMol.Energies.get_persistence_diagram(points)
+    pdgm = MorphoMol.Energies.get_alpha_shape_persistence_diagram(points)
     pdgm = [pdgm[1], pdgm[2], pdgm[3]]
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
     sum(measures .* [prefactors; [1.0]]) + MorphoMol.Energies.get_total_persistence_summed(pdgm, persistence_weights), Dict{String, Any}("Vs" => measures[1], "As" => measures[2], "Cs" => measures[3], "Xs" => measures[4], "OLs" => measures[5], "PDGMs"  => pdgm)
@@ -99,7 +99,7 @@ function solvation_free_energy_with_persistence_in_bounds_without_diagrams(x::Ve
     n_atoms_per_mol = size(template_centers)[2]
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
-    pdgm = MorphoMol.Energies.get_persistence_diagram(points)
+    pdgm = MorphoMol.Energies.get_alpha_shape_persistence_diagram(points)
     pdgm = [pdgm[1], pdgm[2], pdgm[3]]
     p0 = MorphoMol.Energies.get_total_persistence(pdgm[1], persistence_weights[1])
     p1 = MorphoMol.Energies.get_total_persistence(pdgm[2], persistence_weights[2])
