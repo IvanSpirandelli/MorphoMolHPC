@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-100
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
-#SBATCH -o ./job_log/%a.out # STDOUT
+#SBATCH -o ./job_log/rwm_op_2_6r7m/%a.out # STDOUT
 
 export http_proxy=http://proxy2.uni-potsdam.de:3128 #Setting proxy, due to lack of Internet on compute nodes.
 export https_proxy=http://proxy2.uni-potsdam.de:3128
