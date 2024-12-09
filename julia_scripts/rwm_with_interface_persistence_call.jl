@@ -83,7 +83,7 @@ function solvation_free_energy_with_interface_persistence_and_measures_without_d
     n_atoms_per_mol = size(template_centers)[2]
     flat_realization = MorphoMol.Utilities.get_flat_realization(x, template_centers)
     points = Vector{Vector{Float64}}([e for e in eachcol(reshape(flat_realization, (3, Int(length(flat_realization) / 3))))])
-    idgm = MorphoMol.Energies.get_interface_diagram(points, n_atoms_per_mol)
+    idgm = MorphoMol.Energies.get_interface_persistence_diagram(points, n_atoms_per_mol)
     p0 = MorphoMol.Energies.get_death_by_birth_persistence(idgm[1], persistence_weights[1])
     p1 = MorphoMol.Energies.get_death_by_birth_persistence(idgm[2], persistence_weights[2])
     measures = MorphoMol.Energies.get_geometric_measures_and_overlap_value(flat_realization, n_atoms_per_mol, radii, rs, overlap_jump, overlap_slope, delaunay_eps)
