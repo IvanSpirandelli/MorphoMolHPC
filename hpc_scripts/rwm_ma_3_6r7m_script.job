@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=SolvationSimulations
-#SBATCH --time=01-00:30
+#SBATCH --time=01-12:30
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-100
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
-#SBATCH -o ./job_log/%a.out # STDOUT
+#SBATCH -o ./job_log/rwm_ma_3_6r7m/%a.out # STDOUT
 
 export http_proxy=http://proxy2.uni-potsdam.de:3128 #Setting proxy, due to lack of Internet on compute nodes.
 export https_proxy=http://proxy2.uni-potsdam.de:3128
