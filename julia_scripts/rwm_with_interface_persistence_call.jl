@@ -8,7 +8,6 @@ using JLD2
 using LinearAlgebra
 using Rotations
 using PyCall
-using GeometryBasics
 
 function rwm_with_interface_persistence_call(
     config_string::String
