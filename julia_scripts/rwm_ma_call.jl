@@ -10,13 +10,15 @@ using Rotations
 function rwm_ma_call(
     config_string::String
     )
-
     eval(Meta.parse(config_string))
-
     template_centers = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_centers"]
     template_radii = MorphoMol.Utilities.TMV_TEMPLATES[mol_type]["template_radii"]
-    x_init = MorphoMol.Utilities.get_initial_state(n_mol, bnds)
-    
+
+    x_init = x # initial state why ever the fyling fuck I cant name it x_init in config string.
+    if length(x_init) == 0
+        x_init = MorphoMol.Utilities.get_initial_state(n_mol, bnds)
+    end
+    println(x_init)
     n_atoms_per_mol = length(template_centers) ÷ 3
     template_centers = reshape(template_centers,(3,n_atoms_per_mol))
     radii = vcat([template_radii for i in 1:n_mol]...);
