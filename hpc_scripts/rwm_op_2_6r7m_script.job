@@ -3,7 +3,7 @@
 #SBATCH --time=00-01:30
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --array=1-100
+#SBATCH --array=1-33
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
 #SBATCH -o ./job_log/rwm_op_2_6r7m/%a.out # STDOUT
 
