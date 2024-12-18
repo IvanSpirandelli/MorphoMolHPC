@@ -3,7 +3,7 @@
 #SBATCH --time=00-01:30
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --array=1-240
+#SBATCH --array=1-500
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
 #SBATCH -o ./job_log/grid_search_op_2_6r7m/%a.out # STDOUT
 
