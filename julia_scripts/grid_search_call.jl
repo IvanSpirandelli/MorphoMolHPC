@@ -41,7 +41,7 @@ function grid_search_call(config_string::String)
     rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, 1.0 / T_search)
     MorphoMol.Algorithms.simulate!(rwm, x_init, search_time_minutes, output);
 
-    T_sim = MorphoMol.calculate_T0(output["Es"], T_search, 0.24)
+    T_sim = MorphoMol.calculate_T0(output["Es"], 0.24)
 
     input["T"] = T_sim
     output = Dict{String, Vector}(
