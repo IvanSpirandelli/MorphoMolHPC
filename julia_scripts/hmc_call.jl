@@ -24,7 +24,7 @@ function hmc_call(
     pf = MorphoMol.Energies.get_prefactors(rs, η)
     Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
 
-    energy(x) = MorphoMol.solvation_free_energy_and_measures(x, template_centers, radii, rs, pf, 0.0, overlap_slope, 1.0)
+    energy(x) = MorphoMol.solvation_free_energy_and_measures_in_bounds(x, template_centers, radii, rs, pf, 0.0, overlap_slope, bnds, 1.0)
     energy_gradient!(∇E, x) = MorphoMol.solvation_free_energy_gradient!(∇E, x, template_centers, radii, rs, pf, overlap_slope)
 
     hmc = MorphoMol.Algorithms.HamiltonianMonteCarlo(energy, energy_gradient!, MorphoMol.Algorithms.standard_leapfrog!, β, L, ε, Σ)

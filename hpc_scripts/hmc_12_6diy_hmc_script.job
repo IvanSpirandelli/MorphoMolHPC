@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=SolvationSimulations
-#SBATCH --time=00-12:30
+#SBATCH --time=00-06:30
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-100
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
-#SBATCH -o ./job_log/rwm_ma_3_1aly/%a.out # STDOUT
+#SBATCH -o ./job_log/%a.out # STDOUT
 
 export http_proxy=http://proxy2.uni-potsdam.de:3128 #Setting proxy, due to lack of Internet on compute nodes.
 export https_proxy=http://proxy2.uni-potsdam.de:3128
@@ -14,12 +14,12 @@ module purge
 module load lang/Julia/1.7.3-linux-x86_64
 
 # Specify the path to the config file
-config=hpc_scripts/configs/rwm_ma_3_1aly_config.txt
+config=hpc_scripts/configs/hmc_12_6diy_config.txt
 
 # Extract the variables from config file
 config_string=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
 
-julia -e "include(\"julia_scripts/rwm_ma_call.jl\"); rwm_ma_call(\"$config_string\")"
+julia -e "include(\"julia_scripts/hmc_call.jl\"); hmc_call(\"$config_string\")"
 
 # copy back results
 mkdir -p ~/output/ && cp -r simulation_output/* ~/output/
