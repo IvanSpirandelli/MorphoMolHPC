@@ -1,0 +1,4 @@
+Manifest.toml
+simulation_output/*
+job_log/*
+.DS_Store
