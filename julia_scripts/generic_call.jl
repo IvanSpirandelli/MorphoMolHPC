@@ -2,6 +2,7 @@ using Pkg
 Pkg.activate("Project.toml")
 Pkg.instantiate()
 
+ENV["PYCALL_JL_RUNTIME_PYTHON"] = Sys.which("python3")
 using MorphoMol
 using JLD2
 
