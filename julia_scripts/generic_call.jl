@@ -1,4 +1,5 @@
 using Pkg
+println(pwd())
 Pkg.activate("Project.toml")
 Pkg.instantiate()
 
@@ -7,7 +8,7 @@ using MorphoMol
 using JLD2
 
 #input_templates is found here!
-include("input_data/inputs.jl")
+include("julia_scripts/input_data/inputs.jl")
 function generic_call(id::Int)
     output = Dict{String, Vector}(
         "states" => Vector{Vector{Float64}}([]),
