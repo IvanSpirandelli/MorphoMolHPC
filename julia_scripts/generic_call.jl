@@ -6,7 +6,47 @@ ENV["PYCALL_JL_RUNTIME_PYTHON"] = Sys.which("python3")
 using MorphoMol
 using JLD2
 
-function generic_call(id::Int)
+function generic_call(
+    config_string::String
+    )
+    eval(Meta.parse(config_string))
+    template_centers = MorphoMol.TEMPLATES[mol_type]["template_centers"]
+    template_radii = MorphoMol.TEMPLATES[mol_type]["template_radii"]
+
+    n_atoms_per_mol = length(template_centers) ÷ 3
+    template_centers = reshape(template_centers,(3,n_atoms_per_mol))
+    radii = vcat([template_radii for i in 1:n_mol]...);
+
+    x_init = x
+    if length(x_init) == 0
+        x_init = MorphoMol.get_initial_state(n_mol, bnds)
+    end
+
+    prefactors = MorphoMol.Energies.get_prefactors(rs, η)
+
+    input = Dict(
+        "energy" => nrg,
+        "perturbation" => prtbt,
+        "mol_type" => mol_type,
+        "template_centers" => template_centers,
+        "template_radii" => template_radii,
+        "n_mol" => n_mol,
+        "x_init" => x_init,
+        "comment" => comment,
+        "bounds" => bnds,
+        "rs" => rs,
+        "η" => η,
+        "prefactors" => prefactors,
+        "σ_r" => σ_r,
+        "σ_t" => σ_t,
+        "T" => T,
+        "persistence_weights" => persistence_weights,
+        "overlap_jump" => overlap_jump,
+        "overlap_slope" => overlap_slope,
+        "delaunay_eps" => delaunay_eps,
+        "simulation_time_minutes" => simulation_time_minutes,
+    )
+
     output = Dict{String, Vector}(
         "states" => Vector{Vector{Float64}}([]),
         "Es" => Vector{Float64}([]), 
@@ -21,8 +61,6 @@ function generic_call(id::Int)
         "αs" => Vector{Float32}([]),
     )
 
-    input = input_templates[id]
-
     energy = get_energy(input)
     perturbation = get_perturbation(input)
 
@@ -31,27 +69,22 @@ function generic_call(id::Int)
     end
     β = 1.0/input["T"]
 
-    x_init = input["x_init"]
-    if length(x_init) == 0
-        x_init = MorphoMol.get_initial_state(input["n_mol"], input["bounds"])
-    end
-
     rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
 
-    MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), input["simulation_time_minutes"], output);
+    MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
 
-    mkpath(input["output_directory"])
-    @save "$(input["output_directory"])/$(name).jld2" input output
+    mkpath("$(output_directory)")
+    @save "$(output_directory)/$(name).jld2" input output
 end
 
 function get_energy(input)
-    if input["energy"] == :tasp
+    if input["energy"] == "tasp"
         return (x) -> MorphoMol.total_alpha_shape_persistence(x, input["template_centers"], input["persistence_weights"])
-    elseif input["energy"] == :dbbasp
+    elseif input["energy"] == "dbbasp"
         return (x) -> MorphoMol.death_by_birth_alpha_shape_persistence(x, input["template_centers"], input["persistence_weights"])
-    elseif input["energy"] == :tip
+    elseif input["energy"] == "tip"
         return (x) -> MorphoMol.total_interface_persistence(x, input["template_centers"], input["persistence_weights"])
-    elseif input["energy"] == :dbbip
+    elseif input["energy"] == "dbbip"
         return (x) -> MorphoMol.death_by_birth_interface_persistence(x, input["template_centers"], input["persistence_weights"])
     else 
         return (x) -> 0.0
@@ -62,9 +95,9 @@ function get_perturbation(input)
     σ_r = input["σ_r"]
     σ_t = input["σ_t"]
     n_mol = input["n_mol"]
-    if input["perturbation"] == :single_random
+    if input["perturbation"] == "single_random"
         return (x) -> MorphoMol.perturb_single_randomly_chosen(x, σ_r, σ_t)
-    elseif input["perturbation"] == :all
+    elseif input["perturbation"] == "all"
         Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
         return (x) -> MorphoMol.perturb_all(x, Σ)
     end
