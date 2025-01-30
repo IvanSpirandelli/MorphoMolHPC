@@ -39,7 +39,7 @@ function rwm_with_interface_persistence_call(
         "σ_t" => σ_t,
         "rs" => rs,
         "η" => η,
-        "white_bear_prefactpors" => pf,
+        "prefactors" => pf,
         "overlap_slope" => overlap_slope,
         "persistence_weights" => persistence_weights,
         "T" => T,

@@ -42,7 +42,7 @@ function mixed_rwm_call(
         "σ_t" => σ_t,
         "rs" => rs,
         "η" => η,
-        "white_bear_prefactpors" => pf,
+        "prefactors" => pf,
         "overlap_slope" => overlap_slope,
         "T_a" => T_a,
         "T_b" => T_b,

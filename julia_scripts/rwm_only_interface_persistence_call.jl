@@ -24,7 +24,7 @@ function rwm_only_interface_persistence_call(
     β = 1.0 / T
     Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
 
-    energy(x) = MorphoMol.interface_persistence(x, template_centers, persistence_weights)
+    energy(x) = MorphoMol.death_by_birth_interface_persistence(x, template_centers, persistence_weights)
     perturbation(x) = MorphoMol.perturb_single_randomly_chosen(x, σ_r, σ_t)
 
     rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
