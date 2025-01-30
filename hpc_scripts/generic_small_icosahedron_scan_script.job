@@ -3,7 +3,7 @@
 #SBATCH --time=00-00:30
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --array=1-242
+#SBATCH --array=1-121
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
 #SBATCH -o ./job_log/generic_small_icosahedron_scan/%a.out # STDOUT
 

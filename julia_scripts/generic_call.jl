@@ -64,9 +64,11 @@ function generic_call(
     energy = get_energy(input)
     perturbation = get_perturbation(input)
 
-    if input["T"] == 0.0
+    if isapprox(input["T"],0.0)
         set_temperature!(input; scaling = 0.003)
     end
+
+    println("T = $(input["T"])")
     β = 1.0/input["T"]
 
     rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
@@ -108,6 +110,6 @@ function set_temperature!(input; n_samples=1000, scaling = 0.1)
     n_mol = input["n_mol"]
     bounds = input["bounds"]
     test_Es = [energy(MorphoMol.get_initial_state(n_mol, bounds))[1] for i in 1:n_samples]
-    test_Es = [e - minimum(test_Es) for e in test_Es];
+    test_Es = [e - minimum(test_Es) for e in test_Es]
     input["T"] = sum(test_Es) / length(test_Es) * scaling
 end
