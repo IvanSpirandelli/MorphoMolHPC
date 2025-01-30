@@ -39,7 +39,7 @@ function generic_call(
         "prefactors" => prefactors,
         "σ_r" => σ_r,
         "σ_t" => σ_t,
-        "T" => T,
+        "T" => temperature,
         "persistence_weights" => persistence_weights,
         "overlap_jump" => overlap_jump,
         "overlap_slope" => overlap_slope,
@@ -61,13 +61,13 @@ function generic_call(
         "αs" => Vector{Float32}([]),
     )
 
-    energy = get_energy(input)
-    perturbation = get_perturbation(input)
+    energy = MorphoMol.get_energy(input)
+    perturbation = MorphoMol.get_perturbation(input)
 
     if isapprox(input["T"],0.0)
-        set_temperature!(input; scaling = 0.003)
+        T = MorphoMol.get_initial_temperature(input; scaling = 0.003)
+        input["T"] = T
     end
-
     println("T = $(input["T"])")
     β = 1.0/input["T"]
 
@@ -77,39 +77,4 @@ function generic_call(
 
     mkpath("$(output_directory)")
     @save "$(output_directory)/$(name).jld2" input output
-end
-
-function get_energy(input)
-    if input["energy"] == "tasp"
-        return (x) -> MorphoMol.total_alpha_shape_persistence(x, input["template_centers"], input["persistence_weights"])
-    elseif input["energy"] == "dbbasp"
-        return (x) -> MorphoMol.death_by_birth_alpha_shape_persistence(x, input["template_centers"], input["persistence_weights"])
-    elseif input["energy"] == "tip"
-        return (x) -> MorphoMol.total_interface_persistence(x, input["template_centers"], input["persistence_weights"])
-    elseif input["energy"] == "dbbip"
-        return (x) -> MorphoMol.death_by_birth_interface_persistence(x, input["template_centers"], input["persistence_weights"])
-    else 
-        return (x) -> 0.0
-    end
-end
-
-function get_perturbation(input)
-    σ_r = input["σ_r"]
-    σ_t = input["σ_t"]
-    n_mol = input["n_mol"]
-    if input["perturbation"] == "single_random"
-        return (x) -> MorphoMol.perturb_single_randomly_chosen(x, σ_r, σ_t)
-    elseif input["perturbation"] == "all"
-        Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
-        return (x) -> MorphoMol.perturb_all(x, Σ)
-    end
-end
-
-function set_temperature!(input; n_samples=1000, scaling = 0.1)
-    energy = get_energy(input)
-    n_mol = input["n_mol"]
-    bounds = input["bounds"]
-    test_Es = [energy(MorphoMol.get_initial_state(n_mol, bounds))[1] for i in 1:n_samples]
-    test_Es = [e - minimum(test_Es) for e in test_Es]
-    input["T"] = sum(test_Es) / length(test_Es) * scaling
 end
