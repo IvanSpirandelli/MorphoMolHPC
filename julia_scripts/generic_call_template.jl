@@ -1,5 +1,4 @@
 using Pkg
-println(pwd())
 Pkg.activate("Project.toml")
 Pkg.instantiate()
 
@@ -7,8 +6,6 @@ ENV["PYCALL_JL_RUNTIME_PYTHON"] = Sys.which("python3")
 using MorphoMol
 using JLD2
 
-#input_templates is found here!
-include("julia_scripts/input_data/inputs.jl")
 function generic_call(id::Int)
     output = Dict{String, Vector}(
         "states" => Vector{Vector{Float64}}([]),
