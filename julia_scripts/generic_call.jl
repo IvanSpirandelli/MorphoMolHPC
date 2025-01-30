@@ -1,3 +1,10 @@
+using Pkg
+Pkg.activate("Project.toml")
+Pkg.instantiate()
+
+using MorphoMol
+using JLD2
+
 #input_templates is found here!
 include("input_data/inputs.jl")
 function generic_call(id::Int)
@@ -19,23 +26,23 @@ function generic_call(id::Int)
 
     energy = get_energy(input)
     perturbation = get_perturbation(input)
-    
-    if input["T"] = 0.0
-        set_temperature!(input)
+
+    if input["T"] == 0.0
+        set_temperature!(input; scaling = 0.003)
     end
     β = 1.0/input["T"]
 
     x_init = input["x_init"]
     if length(x_init) == 0
-        x_init = MorphoMol.get_initial_state(n_mol, bnds)
+        x_init = MorphoMol.get_initial_state(input["n_mol"], input["bounds"])
     end
 
     rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
 
-    MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
+    MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), input["simulation_time_minutes"], output);
 
-    mkpath(output_directory)
-    @save "$(output_directory)/$(name).jld2" input output
+    mkpath(input["output_directory"])
+    @save "$(input["output_directory"])/$(name).jld2" input output
 end
 
 function get_energy(input)
@@ -56,7 +63,7 @@ function get_perturbation(input)
     σ_r = input["σ_r"]
     σ_t = input["σ_t"]
     n_mol = input["n_mol"]
-    if input["perturbation"] == :single
+    if input["perturbation"] == :single_random
         return (x) -> MorphoMol.perturb_single_randomly_chosen(x, σ_r, σ_t)
     elseif input["perturbation"] == :all
         Σ = vcat([[σ_r, σ_r, σ_r, σ_t, σ_t, σ_t] for _ in 1:n_mol]...)
