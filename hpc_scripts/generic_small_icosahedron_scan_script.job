@@ -22,4 +22,4 @@ config=hpc_scripts/configs/generic_small_icosahedron_scan_config.txt
 # Extract the variables from config file
 config_string=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
 
-julia -e "include(\"julia_scripts/rwm_ma_call.jl\"); rwm_ma_call(\"$config_string\")"
+julia -e "include(\"julia_scripts/generic_call.jl\"); generic_call(\"$config_string\")"
