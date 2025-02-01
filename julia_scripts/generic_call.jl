@@ -15,23 +15,19 @@ function generic_call(
 
     n_atoms_per_mol = length(template_centers) ÷ 3
     template_centers = reshape(template_centers,(3,n_atoms_per_mol))
-    radii = vcat([template_radii for i in 1:n_mol]...);
-
-    x_init = x
-    if length(x_init) == 0
-        x_init = MorphoMol.get_initial_state(n_mol, bnds)
-    end
+    radii = vcat([template_radii for i in 1:n_mol]...)
 
     prefactors = MorphoMol.Energies.get_prefactors(rs, η)
 
     input = Dict(
         "energy" => nrg,
         "perturbation" => prtbt,
+        "initialization" => intl,
         "mol_type" => mol_type,
         "template_centers" => template_centers,
         "template_radii" => template_radii,
         "n_mol" => n_mol,
-        "x_init" => x_init,
+        "x_init" => x,
         "comment" => comment,
         "bounds" => bnds,
         "rs" => rs,
@@ -46,6 +42,13 @@ function generic_call(
         "delaunay_eps" => delaunay_eps,
         "simulation_time_minutes" => simulation_time_minutes,
     )
+
+    initialization = MorphoMol.get_initialization(input)
+    x_init = x
+    if length(x_init) == 0
+        x_init = initialization()
+        input["x_init"] = x_init
+    end
 
     energy = MorphoMol.get_energy(input)
     perturbation = MorphoMol.get_perturbation(input)
@@ -74,7 +77,8 @@ function generic_call(
             "αs" => Vector{Float32}([]),
         )
         rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, 1/T)
-        MorphoMol.Algorithms.simulate!(rwm, MorphoMol.get_initial_state(n_mol, bnds), T_search_time, output_search);
+        x_search = initialization()
+        MorphoMol.Algorithms.simulate!(rwm, x_search, T_search_time, output_search);
         α = output_search["αs"][end]
         push!(search_αs, α)
 
