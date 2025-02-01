@@ -35,6 +35,8 @@ function generic_call(
         "prefactors" => prefactors,
         "σ_r" => σ_r,
         "σ_t" => σ_t,
+        "T_search_runs" => T_search_runs,
+        "T_search_time" => T_search_time,
         "T" => temperature,
         "persistence_weights" => persistence_weights,
         "overlap_jump" => overlap_jump,
@@ -93,6 +95,8 @@ function generic_call(
         println("Ts = $(search_Ts)")
         println("αs = $(search_αs)")
         input["T"] = search_Ts[argmin([abs(α - 0.24) for α in search_αs])]
+        input["T_search_αs"] = search_αs
+        input["T_search_Ts"] = search_Ts
     end
     β = 1.0 / input["T"]
 
