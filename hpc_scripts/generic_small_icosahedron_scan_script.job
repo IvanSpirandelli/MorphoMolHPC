@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=SolvationSimulations
-#SBATCH --time=00-02:30
+#SBATCH --time=00-04:30
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --array=1-121
+#SBATCH --array=1-100
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
 #SBATCH -o ./job_log/generic_small_icosahedron_scan/%a.out # STDOUT
 
