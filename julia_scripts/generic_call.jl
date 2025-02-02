@@ -20,6 +20,8 @@ function generic_call(
     prefactors = MorphoMol.Energies.get_prefactors(rs, η)
 
     input = Dict(
+        "algorithm" => alg,
+        "sa_level" => sa_level,
         "energy" => nrg,
         "perturbation" => prtbt,
         "initialization" => intl,
@@ -56,12 +58,20 @@ function generic_call(
     perturbation = MorphoMol.get_perturbation(input)
 
     if isapprox(input["T"],0.0)
-        T = MorphoMol.get_initial_temperature(input; scaling = 0.0025)
+        T = MorphoMol.get_initial_temperature(input; n_samples = 100, scaling = 0.0025)
         input["T"] = T
     end
 
     search_Ts = [input["T"]]
     search_αs = Vector{Float64}([])
+
+    α_targets = Dict(
+        "sa" => 0.8,
+        "rwm" => 0.24,
+        "hmc" => 0.65,
+    )
+
+    α_target = α_targets[input["algorithm"]]
 
     for i in 1:T_search_runs
         T = search_Ts[end]
@@ -84,25 +94,22 @@ function generic_call(
         α = output_search["αs"][end]
         push!(search_αs, α)
 
-        if α > 0.24
+        if α > α_target
             push!(search_Ts, T * 0.5)
         else
             push!(search_Ts, T * 1.5)
         end
     end
 
+
     if length(search_αs) > 1
         println("Ts = $(search_Ts)")
         println("αs = $(search_αs)")
-        input["T"] = search_Ts[argmin([abs(α - 0.24) for α in search_αs])]
+        input["T"] = search_Ts[argmin([abs(α - α_target) for α in search_αs])]
         input["T_search_αs"] = search_αs
         input["T_search_Ts"] = search_Ts
     end
-    β = 1.0 / input["T"]
 
-    println("T = $(input["T"])")
-
-    rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
     output = Dict{String, Vector}(
         "states" => Vector{Vector{Float64}}([]),
         "Es" => Vector{Float64}([]), 
@@ -116,9 +123,18 @@ function generic_call(
         "P2s" => Vector{Float64}([]),
         "αs" => Vector{Float32}([]),
     )
-
-
-    MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
+    
+    if input["algorithm"] == "hmc"
+        @assert "TODO"
+    elseif input["algorithm"] == "sa"
+        temperature_decline(x) = MorphoMol.zig_zag(x, simulation_time_minutes, input["T"], 0.0, sa_level)
+        sa = MorphoMol.Algorithms.SimulatedAnnealing(energy, perturbation, temperature_decline)
+        MorphoMol.Algorithms.simulate!(sa, x_init, simulation_time_minutes, output)
+    elseif input["algorithm"] == "rwm"
+        β = 1.0 / input["T"]
+        rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
+        MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
+    end
 
     mkpath("$(output_directory)")
     @save "$(output_directory)/$(name).jld2" input output
