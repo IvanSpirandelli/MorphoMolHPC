@@ -4,7 +4,6 @@ Pkg.instantiate()
 
 using JLD2
 
-
 function distill(source_folder, target_folder)
     mkpath(target_folder)
     for file in readdir(source_folder)
