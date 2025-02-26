@@ -44,6 +44,7 @@ function generic_call(
         "overlap_jump" => overlap_jump,
         "overlap_slope" => overlap_slope,
         "delaunay_eps" => delaunay_eps,
+        "exact_delaunay" => exact_delaunay,
         "simulation_time_minutes" => simulation_time_minutes,
     )
 
