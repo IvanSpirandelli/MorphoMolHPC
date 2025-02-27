@@ -89,9 +89,17 @@ function generic_call(
             "P2s" => Vector{Float64}([]),
             "αs" => Vector{Float32}([]),
         )
-        rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, 1/T)
-        x_search = initialization()
-        MorphoMol.Algorithms.simulate!(rwm, x_search, T_search_time, output_search);
+        if occursin("cc", input["energy"]) && input["n_mol"] > 2
+            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
+            get_initial_connected_components = (x) -> MorphoMol.get_initial_connected_component_energies(x, template_centers, template_radii, rs, prefactors, overlap_jump, overlap_slope, delaunay_eps, bol_nmol_l)
+            cc_rwm = MorphoMol.Algorithms.ConnectedComponentRandomWalkMetropolis(energy, perturbation, get_initial_connected_components, 1/T)
+            x_search = initialization()
+            MorphoMol.Algorithms.simulate!(cc_rwm, x_search, T_search_time, output_search)
+        else
+            rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, 1/T)
+            x_search = initialization()
+            MorphoMol.Algorithms.simulate!(rwm, x_search, T_search_time, output_search)
+        end
         α = output_search["αs"][end]
         push!(search_αs, α)
 
@@ -129,8 +137,15 @@ function generic_call(
         @assert "TODO"
     elseif input["algorithm"] == "sa"
         temperature_decline(x) = MorphoMol.zig_zag(x, simulation_time_minutes, input["T"], 0.0, sa_level)
-        sa = MorphoMol.Algorithms.SimulatedAnnealing(energy, perturbation, temperature_decline)
-        MorphoMol.Algorithms.simulate!(sa, x_init, simulation_time_minutes, output)
+        if occursin("cc", input["energy"]) && input["n_mol"] > 2
+            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
+            get_initial_connected_components = (x) -> MorphoMol.get_initial_connected_component_energies(x, template_centers, template_radii, rs, prefactors, overlap_jump, overlap_slope, delaunay_eps, bol_nmol_l)
+            cc_sa = MorphoMol.Algorithms.ConnectedComponentSimulatedAnnealing(energy, perturbation, temperature_decline, get_initial_connected_components)
+            MorphoMol.Algorithms.simulate!(cc_sa, x_init, simulation_time_minutes, output)
+        else
+            sa = MorphoMol.Algorithms.SimulatedAnnealing(energy, perturbation, temperature_decline)
+            MorphoMol.Algorithms.simulate!(sa, x_init, simulation_time_minutes, output)
+        end
     elseif input["algorithm"] == "rwm"
         β = 1.0 / input["T"]
         rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
