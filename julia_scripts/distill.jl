@@ -23,3 +23,9 @@ function distill(source_folder, target_folder)
         end
     end
 end
+
+function distill_all(folder_names)
+    for name in folder_names
+        distill("../Simulations/unsorted_output/$(name)/", "../Simulations/$(name)/")
+    end
+end
