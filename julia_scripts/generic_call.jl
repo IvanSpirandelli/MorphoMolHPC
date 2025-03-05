@@ -148,8 +148,15 @@ function generic_call(
         end
     elseif input["algorithm"] == "rwm"
         β = 1.0 / input["T"]
-        rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
-        MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output);
+        if occursin("cc", input["energy"]) && input["n_mol"] > 2
+            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
+            get_initial_connected_components = (x) -> MorphoMol.get_initial_connected_component_energies(x, template_centers, template_radii, rs, prefactors, overlap_jump, overlap_slope, delaunay_eps, bol_nmol_l)
+            rwm = MorphoMol.Algorithms.ConnectedComponentRandomWalkMetropolis(energy_call, perturbation_call, initial_connected_component_call, β)
+            MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output)
+        else
+            rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
+            MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output)
+        end
     end
 
     mkpath("$(output_directory)")
