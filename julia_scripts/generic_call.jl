@@ -54,6 +54,7 @@ function generic_call(
         x_init = initialization()
         input["x_init"] = x_init
     end
+    println(length(x_init))
 
     energy = MorphoMol.get_energy(input)
     perturbation = MorphoMol.get_perturbation(input)
