@@ -163,6 +163,3 @@ function generic_call(
     mkpath("$(output_directory)")
     @save "$(output_directory)/$(name).jld2" input output
 end
-
-# function search_for_best_temperature()
-# end
