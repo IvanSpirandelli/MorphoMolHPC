@@ -69,7 +69,7 @@ function generic_call(
 
     α_targets = Dict(
         "sa" => 0.8,
-        "rwm" => 0.24,
+        "rwm" => 0.2,
         "hmc" => 0.65,
     )
 
