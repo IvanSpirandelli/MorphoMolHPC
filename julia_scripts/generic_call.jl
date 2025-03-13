@@ -48,13 +48,12 @@ function generic_call(
         "simulation_time_minutes" => simulation_time_minutes,
     )
 
-    initialization = MorphoMol.get_initialization(input)
+    initialization = MorphoMol.get_initialization(input, true)
     x_init = x
     if length(x_init) == 0
         x_init = initialization()
         input["x_init"] = x_init
     end
-    println(length(x_init))
 
     energy = MorphoMol.get_energy(input)
     perturbation = MorphoMol.get_perturbation(input)
