@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=1G
-#SBATCH --array=1-1800
+#SBATCH --array=1-100
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
 #SBATCH -o ./job_log/rwm_6r7m_THREE_40/%a.out # STDOUT
 
