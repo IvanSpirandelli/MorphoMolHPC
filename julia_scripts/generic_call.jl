@@ -34,6 +34,8 @@ function generic_call(
         "bounds" => bnds,
         "rs" => rs,
         "η" => η,
+        "mu" => mu,
+        "normalization_factor" => normalization_factor,
         "prefactors" => prefactors,
         "σ_r" => σ_r,
         "σ_t" => σ_t,
