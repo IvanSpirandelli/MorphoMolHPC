@@ -5,6 +5,7 @@ Pkg.instantiate()
 ENV["PYCALL_JL_RUNTIME_PYTHON"] = Sys.which("python3")
 using MorphoMol
 using JLD2
+using Rotations
 
 function generic_call(
     config_string::String
@@ -122,7 +123,7 @@ function generic_call(
     end
 
     output = Dict{String, Vector}(
-        "states" => Vector{Vector{Float64}}([]),
+        "states" => Vector{Vector{Tuple{QuatRotation{Float64}, Vector{Float64}}}}([]),
         "Es" => Vector{Float64}([]), 
         "Vs" => Vector{Float64}([]), 
         "As" => Vector{Float64}([]), 
