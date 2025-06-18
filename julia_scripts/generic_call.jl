@@ -132,7 +132,8 @@ function generic_call(
         "P0s" => Vector{Float64}([]),
         "P1s" => Vector{Float64}([]),
         "P2s" => Vector{Float64}([]),
-        "αs" => Vector{Float32}([]),
+        "αs" => Vector{Int}([]),
+        "total_step_attempts" => Vector{Int}([]),
     )
     
     if input["algorithm"] == "hmc"
