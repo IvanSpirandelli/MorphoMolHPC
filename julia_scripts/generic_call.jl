@@ -89,7 +89,8 @@ function generic_call(
             "P0s" => Vector{Float64}([]),
             "P1s" => Vector{Float64}([]),
             "P2s" => Vector{Float64}([]),
-            "αs" => Vector{Float32}([]),
+            "αs" => Vector{Int}([]),
+            "total_step_attempts" => Vector{Int}([]),
         )
         if occursin("cc", input["energy"]) && input["n_mol"] > 2
             bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
@@ -102,7 +103,7 @@ function generic_call(
             x_search = initialization()
             MorphoMol.Algorithms.simulate!(rwm, x_search, T_search_time, output_search)
         end
-        α = output_search["αs"][end]
+        α = length(output_search["αs"])/output_search["αs"][end]
         push!(search_αs, α)
 
         if α > α_target
