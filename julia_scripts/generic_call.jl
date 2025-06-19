@@ -79,7 +79,7 @@ function generic_call(
     for i in 1:T_search_runs
         T = search_Ts[end]
         output_search = Dict{String, Vector}(
-            "states" => Vector{Vector{Float64}}([]),
+            "states" => Vector{Vector{Tuple{QuatRotation{Float64}, Vector{Float64}}}}([]),
             "Es" => Vector{Float64}([]), 
             "Vs" => Vector{Float64}([]), 
             "As" => Vector{Float64}([]), 
