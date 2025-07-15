@@ -10,6 +10,8 @@ using Rotations
 function generic_call(
     config_string::String
     )
+    mode = "time"
+    iterations = 0
     eval(Meta.parse(config_string))
     template_centers = MorphoMol.TEMPLATES[mol_type]["template_centers"]
     template_radii = MorphoMol.TEMPLATES[mol_type]["template_radii"]
@@ -47,7 +49,9 @@ function generic_call(
         "overlap_slope" => overlap_slope,
         "delaunay_eps" => delaunay_eps,
         "exact_delaunay" => exact_delaunay,
+        "mode" => mode,
         "simulation_time_minutes" => simulation_time_minutes,
+        "iterations" => iterations,
     )
 
     initialization = MorphoMol.get_initialization(input, true)
@@ -158,10 +162,18 @@ function generic_call(
             bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
             get_initial_connected_components = (x) -> MorphoMol.get_initial_connected_component_energies(x, template_centers, template_radii, rs, prefactors, overlap_jump, overlap_slope, delaunay_eps, bol_nmol_l)
             rwm = MorphoMol.Algorithms.ConnectedComponentRandomWalkMetropolis(energy, perturbation, get_initial_connected_components, β)
-            MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output)
+            if mode == "time"
+                MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output)
+            elseif mode == "iterations"
+                MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), iterations, output)
+            end
         else
             rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
-            MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output)
+            if mode == "time"
+                MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output)
+            elseif mode == "iterations"
+                MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), iterations, output)
+            end
         end
     end
 
