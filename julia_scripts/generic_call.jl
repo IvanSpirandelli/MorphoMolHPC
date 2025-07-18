@@ -12,6 +12,7 @@ function generic_call(
     )
     mode = "time"
     iterations = 0
+    config_string = replace(config_string, "__SPACE__" => " ")
     eval(Meta.parse(config_string))
     template_centers = MorphoMol.TEMPLATES[mol_type]["template_centers"]
     template_radii = MorphoMol.TEMPLATES[mol_type]["template_radii"]
