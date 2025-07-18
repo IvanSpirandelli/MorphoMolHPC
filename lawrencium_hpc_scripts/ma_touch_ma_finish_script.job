@@ -17,7 +17,7 @@ mkdir -p /global/scratch/users/ivanspirandelli/MorphoMolHPC/job_log/ma_touch_ma_
 module purge
 module load anaconda3/2024.02-1-11.4
 # Manually source the conda setup (REQUIRED!)
-source $CONDA_PREFIX/etc/profile.d/conda.sh
+source /global/software/rocky-8.x86_64/manual/modules/langs/anaconda3/2024.02-1/etc/profile.d/conda.sh
 conda activate oineus_venv
 module load julia/1.10.2-11.4
 
