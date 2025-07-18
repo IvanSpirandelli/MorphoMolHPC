@@ -15,8 +15,8 @@ function generic_call(
     config_string = replace(config_string, "__SPACE__" => " ")
     eval(Meta.parse(config_string))
 
-    if typeof(x) == String
-        x = eval(Meta.parse(x))
+    if typeof(init_stt) == typeof(String)
+        init_stt = eval(Meta.parse(init_stt))
     end
 
     template_centers = MorphoMol.TEMPLATES[mol_type]["template_centers"]
@@ -38,7 +38,7 @@ function generic_call(
         "template_centers" => template_centers,
         "template_radii" => template_radii,
         "n_mol" => n_mol,
-        "x_init" => x,
+        "x_init" => init_stt,
         "comment" => comment,
         "bounds" => bnds,
         "rs" => rs,
