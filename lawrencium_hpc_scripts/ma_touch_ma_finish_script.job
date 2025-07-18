@@ -22,6 +22,12 @@ module load julia/1.10.2-11.4
 # Specify the path to the config file
 config=lawrencium_hpc_scripts/configs/ma_touch_ma_finish_config.txt
 
+if [ -z "$config_string" ]; then
+echo "Error: No config found for task ID $SLURM_ARRAY_TASK_ID"
+exit 1
+fi
+
+echo "Running task $SLURM_ARRAY_TASK_ID with config: $config_string"
 # Extract the variables from config file
 config_string=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
 
