@@ -14,6 +14,11 @@ function generic_call(
     iterations = 0
     config_string = replace(config_string, "__SPACE__" => " ")
     eval(Meta.parse(config_string))
+
+    if typeof(x) == String
+        x = eval(Meta.parse(x))
+    end
+
     template_centers = MorphoMol.TEMPLATES[mol_type]["template_centers"]
     template_radii = MorphoMol.TEMPLATES[mol_type]["template_radii"]
 
