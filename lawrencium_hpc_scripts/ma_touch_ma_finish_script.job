@@ -9,7 +9,7 @@
 #SBATCH --mem-per-cpu=1G
 #SBATCH --array=1-20
 #SBATCH --chdir=/global/scratch/users/ivanspirandelli/MorphoMolHPC/
-#SBATCH -o ./job_log/ma_touch_ma_finish/%a.out # STDOUT
+#SBATCH -o ./job_log/ma_touch_ma_finish_%a.out # STDOUT
 
 # Create output directory if it doesn't exist
 mkdir -p /global/scratch/users/ivanspirandelli/MorphoMolHPC/job_log/ma_touch_ma_finish/
