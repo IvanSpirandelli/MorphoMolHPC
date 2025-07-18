@@ -9,7 +9,7 @@
 #SBATCH --mem-per-cpu=1G
 #SBATCH --array=1-200
 #SBATCH --chdir=/global/scratch/users/ivanspirandelli/MorphoMolHPC/
-#SBATCH -o ./job_log/ma_touch_ma_finish_%a.out # STDOUT
+#SBATCH -o ./job_log/ma_touch_top_ma_finish_%a.out # STDOUT
 
 module purge
 module load anaconda3/2024.02-1-11.4
@@ -19,7 +19,7 @@ conda activate oineus_venv
 module load julia/1.10.2-11.4
 
 # Specify the path to the config file
-config=lawrencium_hpc_scripts/configs/ma_touch_ma_finish_config.txt
+config=lawrencium_hpc_scripts/configs/ma_touch_top_ma_finish_config.txt
 
 # Extract the variables from config file
 config_string=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
