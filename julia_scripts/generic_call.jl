@@ -10,13 +10,12 @@ using Rotations
 function generic_call(
     config_string::String
     )
-    mode = "time"
-    iterations = 0
-    config_string = replace(config_string, "__SPACE__" => " ")
-    eval(Meta.parse(config_string))
-
-    if typeof(init_stt) == typeof(String)
-        init_stt = eval(Meta.parse(init_stt))
+    Main.mode = "time"
+    Main.iterations = 0
+    Base.eval(Main, Meta.parse(config_string))
+    if typeof(Main.x) == String
+        tmp = replace(Main.x, "__SPACE__" => " ")
+        Main.x = eval(Meta.parse(tmp))
     end
 
     template_centers = MorphoMol.TEMPLATES[mol_type]["template_centers"]
@@ -38,7 +37,7 @@ function generic_call(
         "template_centers" => template_centers,
         "template_radii" => template_radii,
         "n_mol" => n_mol,
-        "x_init" => init_stt,
+        "x_init" => Main.x,
         "comment" => comment,
         "bounds" => bnds,
         "rs" => rs,
@@ -168,17 +167,17 @@ function generic_call(
             bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
             get_initial_connected_components = (x) -> MorphoMol.get_initial_connected_component_energies(x, template_centers, template_radii, rs, prefactors, overlap_jump, overlap_slope, delaunay_eps, bol_nmol_l)
             rwm = MorphoMol.Algorithms.ConnectedComponentRandomWalkMetropolis(energy, perturbation, get_initial_connected_components, β)
-            if mode == "time"
+            if Main.mode == "time"
                 MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output)
-            elseif mode == "iterations"
-                MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), iterations, output)
+            elseif Main.mode == "iterations"
+                MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), Main.iterations, output)
             end
         else
             rwm = MorphoMol.Algorithms.RandomWalkMetropolis(energy, perturbation, β)
-            if mode == "time"
+            if Main.mode == "time"
                 MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), simulation_time_minutes, output)
-            elseif mode == "iterations"
-                MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), iterations, output)
+            elseif Main.mode == "iterations"
+                MorphoMol.Algorithms.simulate!(rwm, deepcopy(x_init), Main.iterations, output)
             end
         end
     end
