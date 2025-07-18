@@ -1,7 +1,4 @@
 #!/bin/bash
-# Create output directory if it doesn't exist
-mkdir -p /global/scratch/users/ivanspirandelli/MorphoMolHPC/job_log/ma_touch_ma_finish/
-
 #SBATCH --job-name=SolvationSimulations
 #SBATCH --account=pc_mlgeometry
 #SBATCH --qos=lr_normal
@@ -13,6 +10,9 @@ mkdir -p /global/scratch/users/ivanspirandelli/MorphoMolHPC/job_log/ma_touch_ma_
 #SBATCH --array=1-20
 #SBATCH --chdir=/global/scratch/users/ivanspirandelli/MorphoMolHPC/
 #SBATCH -o ./job_log/ma_touch_ma_finish/%a.out # STDOUT
+
+# Create output directory if it doesn't exist
+mkdir -p /global/scratch/users/ivanspirandelli/MorphoMolHPC/job_log/ma_touch_ma_finish/
 
 module purge
 module load anaconda3/2024.02-1-11.4
