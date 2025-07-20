@@ -1,6 +1,6 @@
 [
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -36,7 +36,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -72,7 +72,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -108,7 +108,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -144,7 +144,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -180,7 +180,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -216,7 +216,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -252,7 +252,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -288,7 +288,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -324,7 +324,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -360,7 +360,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -396,7 +396,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -432,7 +432,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -468,7 +468,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -504,7 +504,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -540,7 +540,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -576,7 +576,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -612,7 +612,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -648,7 +648,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -684,7 +684,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -720,7 +720,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -756,7 +756,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -792,7 +792,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -828,7 +828,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -864,7 +864,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -900,7 +900,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -936,7 +936,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -972,7 +972,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1008,7 +1008,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1044,7 +1044,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1080,7 +1080,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1116,7 +1116,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1152,7 +1152,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1188,7 +1188,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1224,7 +1224,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1260,7 +1260,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1296,7 +1296,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1332,7 +1332,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1368,7 +1368,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
@@ -1404,7 +1404,7 @@
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 960.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "iterations",
         "energy": "cc_fsol_twasp_interpolated",
         "exact_delaunay": false,
