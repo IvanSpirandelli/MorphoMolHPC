@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH --job-name=SolvationSimulations
+#SBATCH --account=pc_mlgeometry
+#SBATCH --qos=lr_normal
+#SBATCH --partition=lr7
+#SBATCH --time=01-04:30
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1G
+#SBATCH --array=1-40
+#SBATCH --chdir=/global/scratch/users/ivanspirandelli/MorphoMolHPC/
+#SBATCH -o ./job_log/rwm_SEVEN_200_60_%a.out # STDOUT
+
+module purge
+module load anaconda3/2024.02-1-11.4
+# Manually source the conda setup (REQUIRED!)
+source /global/software/rocky-8.x86_64/manual/modules/langs/anaconda3/2024.02-1/etc/profile.d/conda.sh
+conda activate oineus_venv
+module load julia/1.10.2-11.4
+
+# Define the path to the JSON config file
+CONFIG_JSON="lawrencium_hpc_scripts/configs/rwm_SEVEN_200_60_config.json"
+
+# Call the Julia script with the JSON path and the task ID
+julia julia_scripts/generic_call_from_json.jl "$CONFIG_JSON" "$SLURM_ARRAY_TASK_ID"
