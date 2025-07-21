@@ -39,6 +39,10 @@ function run_simulation_from_config(config::Dict)
     prefactors = MorphoMol.Energies.get_prefactors(rs, η)
     persistence_weights = Vector{Float64}(config["persistence_weights"])
 
+    overlap_jump = config["overlap_jump"]
+    overlap_slope = config["overlap_slope"]
+    delaunay_eps = config["delaunay_eps"]
+
     # Build the main 'input' dictionary for MorphoMol functions
     input = Dict(
         "algorithm" => config["algorithm"],
@@ -63,9 +67,9 @@ function run_simulation_from_config(config::Dict)
         "T_search_time" => config["T_search_time"],
         "T" => config["temperature"],
         "persistence_weights" => persistence_weights,
-        "overlap_jump" => config["overlap_jump"],
-        "overlap_slope" => config["overlap_slope"],
-        "delaunay_eps" => config["delaunay_eps"],
+        "overlap_jump" => overlap_jump,
+        "overlap_slope" => overlap_slope,
+        "delaunay_eps" => delaunay_eps,
         "exact_delaunay" => config["exact_delaunay"],
         "mode" => config["mode"],
         "simulation_time_minutes" => config["simulation_time_minutes"],
