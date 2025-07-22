@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=1G
-#SBATCH --array=1-33
+#SBATCH --array=1-40
 #SBATCH --chdir=/global/scratch/users/ivanspirandelli/MorphoMolHPC/
 #SBATCH -o ./job_log/rwm_SIX_0_30_%a.out # STDOUT
 
