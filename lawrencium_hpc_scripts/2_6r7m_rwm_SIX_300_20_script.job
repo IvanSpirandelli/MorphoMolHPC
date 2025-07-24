@@ -2,7 +2,7 @@
 #SBATCH --job-name=SolvationSimulations
 #SBATCH --account=pc_mlgeometry
 #SBATCH --qos=lr_normal
-#SBATCH --partition=lr6
+#SBATCH --partition=lr7
 #SBATCH --time=01-02:30
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
