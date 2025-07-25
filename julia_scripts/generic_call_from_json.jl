@@ -29,7 +29,9 @@ function run_simulation_from_config(config::Dict)
     x_init = Vector{Tuple{QuatRotation{Float64}, Vector{Float64}}}(config["x_init"]) # Ensure correct type, especially for empty arrays
     
     # Get molecular templates
-    template_centers, template_radii = MorphoMol.get_template_centers_and_radii(mol_type)
+    template_centers = MorphoMol.TEMPLATES[mol_type]["template_centers"]
+    template_radii = MorphoMol.TEMPLATES[mol_type]["template_radii"]
+
 
     n_atoms_per_mol = length(template_centers) ÷ 3
     template_centers = reshape(template_centers, (3, n_atoms_per_mol))
