@@ -3,7 +3,7 @@
 #SBATCH --time=01-00:30
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=1.5G
+#SBATCH --mem-per-cpu=1500M
 #SBATCH --array=1-40
 #SBATCH --chdir=/work/spirandelli/MorphoMolHPC/
 #SBATCH -o ./job_log/3_1aly_rwm_THREE_800_40/%a.out # STDOUT
