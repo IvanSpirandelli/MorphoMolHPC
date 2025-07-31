@@ -119,7 +119,7 @@ function run_simulation_from_config(config::Dict)
             "total_step_attempts" => Vector{Int}([]),
         )
         if occursin("cc", input["energy"]) && input["n_mol"] > 2
-            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
+            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(template_centers, template_radii, rs))
             get_initial_connected_components = (x) -> MorphoMol.get_initial_connected_component_energies(x, template_centers, template_radii, rs, prefactors, overlap_jump, overlap_slope, delaunay_eps, bol_nmol_l)
             cc_rwm = MorphoMol.Algorithms.ConnectedComponentRandomWalkMetropolis(energy, perturbation, get_initial_connected_components, 1/T)
             x_search = initialization_func()
@@ -175,7 +175,7 @@ function run_simulation_from_config(config::Dict)
     elseif input["algorithm"] == "sa"
         temperature_decline(x) = MorphoMol.zig_zag(x, simulation_time_minutes, input["T"], 0.0, sa_level)
         if occursin("cc", input["energy"]) && input["n_mol"] > 2
-            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
+            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(template_centers, template_radii, rs))
             get_initial_connected_components = (x) -> MorphoMol.get_initial_connected_component_energies(x, template_centers, template_radii, rs, prefactors, overlap_jump, overlap_slope, delaunay_eps, bol_nmol_l)
             cc_sa = MorphoMol.Algorithms.ConnectedComponentSimulatedAnnealing(energy, perturbation, temperature_decline, get_initial_connected_components)
             MorphoMol.Algorithms.simulate!(cc_sa, x_init, simulation_time_minutes, output)
@@ -186,7 +186,7 @@ function run_simulation_from_config(config::Dict)
     elseif input["algorithm"] == "rwm"
         β = 1.0 / input["T"]
         if occursin("cc", input["energy"]) && input["n_mol"] > 2
-            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(mol_type))
+            bol_nmol_l = (x, id1, id2) -> MorphoMol.are_bounding_spheres_overlapping(x, id1, id2, MorphoMol.get_bounding_radius(template_centers, template_radii, rs))
             get_initial_connected_components = (x) -> MorphoMol.get_initial_connected_component_energies(x, template_centers, template_radii, rs, prefactors, overlap_jump, overlap_slope, delaunay_eps, bol_nmol_l)
             rwm = MorphoMol.Algorithms.ConnectedComponentRandomWalkMetropolis(energy, perturbation, get_initial_connected_components, β)
             if mode == "time"
