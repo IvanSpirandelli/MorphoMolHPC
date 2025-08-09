@@ -1,20 +1,20 @@
 [
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "1",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -28,29 +28,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "2",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -64,29 +64,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "3",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -100,29 +100,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "4",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -136,29 +136,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "5",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -172,29 +172,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "6",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -208,29 +208,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "7",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -244,29 +244,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "8",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -280,29 +280,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "9",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -316,29 +316,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "10",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -352,29 +352,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "11",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -388,29 +388,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "12",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -424,29 +424,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "13",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -460,29 +460,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "14",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -496,29 +496,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "15",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -532,29 +532,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "16",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -568,29 +568,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "17",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -604,29 +604,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "18",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -640,29 +640,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "19",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -676,29 +676,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "20",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -712,29 +712,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "21",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -748,29 +748,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "22",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -784,29 +784,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "23",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -820,29 +820,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "24",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -856,29 +856,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "25",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -892,29 +892,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "26",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -928,29 +928,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "27",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -964,29 +964,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "28",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1000,29 +1000,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "29",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1036,29 +1036,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "30",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1072,29 +1072,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "31",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1108,29 +1108,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "32",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1144,29 +1144,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "33",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1180,29 +1180,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "34",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1216,29 +1216,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "35",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1252,29 +1252,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "36",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1288,29 +1288,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "37",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1324,29 +1324,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "38",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1360,29 +1360,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "39",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1396,29 +1396,29 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
     },
     {
-        "simulation_time_minutes": 720.0,
+        "simulation_time_minutes": 1440.0,
         "mode": "time",
-        "energy": "cc_fsol_twasp_interpolated",
+        "energy": "cc_fsol",
         "exact_delaunay": false,
         "sa_level": [
             0.0
         ],
         "σ_r": 0.2,
-        "temperature": 4.0,
-        "mu": 0.3,
+        "temperature": 2.0,
+        "mu": 1.0,
         "name": "40",
-        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_THREE_300_40/",
+        "output_directory": "../Simulations/unsorted_output/2_4bmg_rwm_ZERO_1000_20/",
         "delaunay_eps": 100.0,
         "perturbation": "single_random",
-        "comment": "40",
+        "comment": "20",
         "overlap_jump": 0.0,
         "iterations": 1,
         "algorithm": "rwm",
@@ -1432,9 +1432,9 @@
         "initialization": "random",
         "T_search_runs": 0,
         "persistence_weights": [
-            1.0,
-            -0.4,
-            -0.9
+            0.0,
+            0.0,
+            0.0
         ],
         "bounds": 120.0,
         "overlap_slope": 1.1
